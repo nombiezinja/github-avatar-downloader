@@ -1,0 +1,22 @@
+{
+  "name": "github-avatar-downloader",
+  "version": "1.0.0",
+  "description": "Lighthouse Labs exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nombiezinja/github-avatar-downloader.git"
+  },
+  "author": "Ti Zhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nombiezinja/github-avatar-downloader/issues"
+  },
+  "homepage": "https://github.com/nombiezinja/github-avatar-downloader#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
