@@ -1,16 +1,20 @@
 var request = require('request');
 var fs = require('fs');
 
+
+
 function downloadImageByURL(url, filePath) {
-   request. get(url)
+
+  request. get(url)
     .on('error', function(err) {
       throw err;
     })
 
-    .pipe(fs.createWriteStream(filePath))
-
-
+    .pipe(fs.createWriteStream(filePath));
 
 }
 
-downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
+module.exports = downloadImageByURL;
+
+
+// downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
