@@ -14,17 +14,28 @@ function getRepoContributors(repoOwner, repoName, cb) {
       "user-agent":"ti"
     },
     url: requestURL
-  }
+  } //for the RequestOptions variable
 
   request.get(requestOptions, function(err, response, body) {
+
     console.log('error', err);
+
     console.log('statusCode:', response && response.statusCode);
-    cb(body)
 
-  })
+    var output = JSON.parse(body);
+    // console.log(output)
+    // console.log(typeof output)
+    output.forEach (function(element) {
+      console.log(element.avatar_url);
+    });
 
 
-}
+
+
+  }); //request.get
+
+} //function getRepoContributors
+
 
 // function print(output) {
 //   console.log(JSON.parse(output));
