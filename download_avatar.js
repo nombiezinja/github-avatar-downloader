@@ -2,11 +2,13 @@ var request = require('request');
 
 var downloadIMG = require('./download-image-by-url');
 
+var dotev = require('dotenv').config();
+
 console.log('Welcome to GitHub Avatar Downloader!');
 
 //user and key
-var GITHUB_USER = 'Nombiezinja';
-var GITHUB_TOKEN = '7e8cbab3e97fe6f54dfab6d362123fafc3afbfbb';
+var GITHUB_USER = process.env.GITHUB_USER;
+var GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 function getRepoContributors(repoOwner, repoName, cb){
 
