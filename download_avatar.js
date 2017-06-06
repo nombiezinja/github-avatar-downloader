@@ -1,5 +1,7 @@
 var request = require('request');
 
+var downloadIMG = require('./download-image-by-url');
+
 console.log('Welcome to GitHub Avatar Downloader!');
 
 var GITHUB_USER = 'Nombiezinja';
@@ -11,37 +13,33 @@ function getRepoContributors(repoOwner, repoName, cb) {
 
   var requestOptions = {
     headers:{
-      "user-agent":"ti"
+      'user-agent':'ti'
     },
     url: requestURL
   } //for the RequestOptions variable
 
   request.get(requestOptions, function(err, response, body) {
 
-    console.log('error', err);
+    if (err) {console.log('error', err)};
 
     console.log('statusCode:', response && response.statusCode);
 
-    var output = JSON.parse(body);
-    // console.log(output)
-    // console.log(typeof output)
-    output.forEach (function(element) {
-      console.log(element.avatar_url);
-    });
-
-
-
+    cb(body);
 
   }); //request.get
 
 } //function getRepoContributors
 
 
-// function print(output) {
-//   console.log(JSON.parse(output));
-// }
 
+getRepoContributors('jquery', 'jquery', function loop(result) {
 
-getRepoContributors("jquery", "jquery", function print(output) {
-  console.log(JSON.parse(output));
+  JSON.parse(result).forEach (function(element) {
+      var url = element.avatar_url;
+      var filePath = element.login + '.jpg';
+      console.log(' url is ', url);
+      console.log(' file path is ', filePath);
+      downloadIMG(url, filePath);
+  });
+
 });
